@@ -1,0 +1,39 @@
+* {
+  font-size: 20px;
+}
+ul.nav-list {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+.nav-list li {
+  display: inline;
+  padding: 8px;
+}
+.main {
+  padding-top: 40px;
+}
+.my-left-col p, .my-right-col p {
+  text-align: center;
+}
+.tweet-wrapper {
+  height: 500px;
+  /*max-height: 500px;*/
+}
+.tweet-wrapper img {
+  max-height: 100%;
+}
+.title {
+  margin-bottom: 25px;
+}
+.my-left-col p, .my-right-col p {
+  margin-top: 250px;
+}
+.junk p {
+  width: 50px;
+  margin: auto;
+}
+@keyframes swipe-left {
+    from {background-color: red;}
+    to {background-color: yellow;}
+}

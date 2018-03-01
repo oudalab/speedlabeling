@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Speed Labeling</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <link href="https://use.fontawesome.com/releases/v5.0.7/css/all.css" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="./css/multi_class.css">
+</head>
+<body>
+<div class="navbar">
+  <ul class="nav-list">
+    <li><a href="#">Home</a></li>
+    <li><a href="#">Labels</a></li>
+    <li><a href="#">Contact</a></li>
+    <li><a href="#">About</a></li>
+  </ul>
+</div>
+
+<div class="container main">
+  <h5 class="title">Click the relevant tags or enter your own!</h5 class="title">
+  <div class="row">
+    <div class="col my-left-col">
+      <h3>Recommended</h3>
+      <input class="form-control new-tag" placeholder="Add a tag">
+      <div class="recommended" style="display: flex; flex-wrap: wrap;"></div>  
+    </div> 
+    <div class="col-6 tweet-wrapper">
+      <img class="img1" src="./images/tweet.png" width="100%" />
+      <img class="img2" src="./images/tweet2.png" width="100%" style="display: none;" />
+    </div>
+    <div class="col my-right-col">
+      <h3>Selected</h3>
+      <div class="tagged"></div>
+    </div>
+    
+  </div>
+  <!-- Tags -->
+  <!-- <h1 style="margin-top: 30px;">Recommended</h1>
+  <div class="recommended" style="display: flex; flex-wrap: wrap;"></div>
+  <h1>Tag</h1>
+  <div class="tagged"></div> -->
+</div>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<script src="./js/multi_class.js"></script>
+</body>
+</html>

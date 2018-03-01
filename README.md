@@ -10,5 +10,8 @@ The third part of the system, the generative model, deals with different inputs 
 
 Acquiring the large datasets needed by supervised learning is arguably the most challenging part of building artificial intelligence. By designing a system that utilizes the power of crowdsourcing and machine learning, we will be able to classify datasets cheaper, faster, and more accurately, leading to better learning models.
 
+A prototype two-class labeling interface
 ![A prototype two-class labeling interface](images/two_class.png?raw=true "Two Class")
+
+A prototype multi-class labeling interface
 ![A prototype multi-class labeling interface](images/multi_class.png?raw=true "Multi Class")

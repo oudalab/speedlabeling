@@ -34,16 +34,13 @@ ul.nav-list {
   margin-bottom: 10px;
 }
 .new-tag {
-  margin-bottom: 10px;
+  /*margin-bottom: 10px;*/
 }
-.x {
-  display: none;
-  margin-left: 5px;
+.submit-button {
+  margin: auto;
+  display: block;
+  margin-top: 20px;
 }
-.x:hover {
-  display: inherit;
-}
-@keyframes swipe-left {
-    from {background-color: red;}
-    to {background-color: yellow;}
+.add-button {
+  
 }

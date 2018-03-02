@@ -3,13 +3,8 @@ var recommended = ["copper", "explain", "educated", "tenuous", "unite", "decisiv
   "zephyr", "stir", "probable", "two"];
 var tagged = [];
 
-var hover = function(){
-  console.log("hi");
-  $(".tag").toggleClass("btn-outline-primary");
-  $(".tag").toggleClass("btn-outline-danger");
-};
-
-var refreshRecommended = function(recommended) {
+// updates the recommended classes
+var refreshRecommended = function() {
   var recContainer = $(".recommended");
   recContainer.empty();
   recommended.forEach(function(tag) {
@@ -18,22 +13,20 @@ var refreshRecommended = function(recommended) {
   });
 };
 
-var refreshTagged = function(tagged) {
+// updates the selected classes
+var refreshTagged = function() {
   var taggedContainer = $(".tagged");
   taggedContainer.empty();
   tagged.forEach(function(tag) {
-    taggedContainer.append('<button type="button" class="tag btn btn-outline-danger"\
-      onclick="untag(this.innerText)">' + tag + '<i class="x fa fa-times"></i></button>');
+    taggedContainer.append('<button type="button" class="tag remove-tag btn btn-outline-danger"\
+      onclick="untag(this.innerText)">' + tag + '</button>');
   });
-  // $(".tag").hover(
-  //   function(){
-  //     $(".tag").switchClass("btn-outline-primary","btn-outline-danger");
-  //   },
-  //  function(){
-  //   $(".tag").switchClass("btn-outline-danger","btn-outline-primary");
-  //  });
-  $(".tag").hover(hover, hover);
+};
 
+// updates the view based on the new data in the arrays
+var refresh = function() {
+  refreshRecommended();
+  refreshTagged();
 };
 
 var tag = function(text) {
@@ -45,8 +38,7 @@ var tag = function(text) {
   if (index > -1) {
     recommended.splice(index, 1);
   }
-  refreshRecommended(recommended);
-  refreshTagged(tagged);
+  refresh();
 };
 
 var untag = function(text) {
@@ -59,9 +51,37 @@ var untag = function(text) {
   if (index > -1) {
     tagged.splice(index, 1);
   }
-  refreshRecommended(recommended);
-  refreshTagged(tagged);
+  refresh();
 };
 
-refreshRecommended(recommended);
-refreshTagged(tagged);
+// adds input's val to the selected tags array
+var onAdd = function(){
+  tagged.push($(".new-tag").val());
+  $(".new-tag").val("");
+  refresh();
+};
+
+// bind an event to the input textbox
+$('.new-tag').on('keypress', function (e) {
+  if(e.which === 13) { // Enter key
+    // Disable textbox to prevent multiple submit
+    $(this).attr("disabled", "disabled");
+
+    // add to selected tags array
+    onAdd();
+
+    //Enable the textbox again if needed.
+    $(this).removeAttr("disabled");
+
+    // return focus to input
+    $(".new-tag").focus();
+  }
+});
+
+var submit = function() {
+  // TODO
+  alert("Submitting " + tagged)
+};
+
+refresh();
+

@@ -21,12 +21,27 @@
   <div class="row">
     <div class="col my-left-col">
       <h3>Recommended</h3>
-      <input class="form-control new-tag" placeholder="Add a tag">
-      <div class="recommended" style="display: flex; flex-wrap: wrap;"></div>  
+      <!-- <button type="button" class="add-button btn btn-outline-success">Add</button> -->
+
+      <div class="new-tag-group input-group mb-3">
+        <input type="text" class="form-control new-tag" placeholder="Add a tag">
+        <div class="input-group-append">
+          <button onclick="onAdd()" class="add-button btn btn-outline-secondary" type="button">
+            <i class="fa fa-plus"></i>
+          </button>
+        </div>
+      </div>
+
+      <div class="recommended"></div>  
     </div> 
     <div class="col-6 tweet-wrapper">
       <img class="img1" src="./images/tweet.png" width="100%" />
       <img class="img2" src="./images/tweet2.png" width="100%" style="display: none;" />
+      <button onclick="submit()" 
+        type="button" 
+        class="submit-button btn btn-outline-success">
+        Submit
+      </button>
     </div>
     <div class="col my-right-col">
       <h3>Selected</h3>
@@ -34,11 +49,6 @@
     </div>
     
   </div>
-  <!-- Tags -->
-  <!-- <h1 style="margin-top: 30px;">Recommended</h1>
-  <div class="recommended" style="display: flex; flex-wrap: wrap;"></div>
-  <h1>Tag</h1>
-  <div class="tagged"></div> -->
 </div>
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>

@@ -3,7 +3,7 @@
 <head>
   <title>Speed Labeling</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-  <link rel="stylesheet" type="text/css" href="./css/styles.css">
+  <link rel="stylesheet" type="text/css" href="./css/swipe.css">
 </head>
 <body>
 <div class="navbar">
@@ -16,7 +16,7 @@
 </div>
 
 <div class="container main">
-  <h5 class="title">Use the left, right, and down arrow keys to pick a label. Press space bar to confirm your choice!</h5 class="title">
+  <h5 class="title">Swipe left and right to choose the class!</h5 class="title">
   <div class="row">
     <div class="col my-left-col">
       <p>Unhealthy</p>
@@ -24,7 +24,7 @@
     </div>
     <div class="col-6 tweet-wrapper">
       <img class="img1" src="./images/tweet.png" width="100%" />
-      <img class="img2" src="./images/tweet2.png" width="100%" style="display: none;" />
+      <!-- <img class="img2" src="./images/tweet2.png" width="100%" style="display: none;" /> -->
     </div>
     <div class="col my-right-col">
       <p>Healthy</p>
@@ -39,67 +39,6 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 <script src="https://code.jquery.com/mobile/1.5.0-alpha.1/jquery.mobile-1.5.0-alpha.1.min.js"></script>
-<script type="text/javascript">
-
-  var map = {};
-  var toggle = function() {
-    $(".img1").toggle();
-    $(".img2").toggle();
-  };
-  document.onkeydown = document.onkeyup = function(e){
-      e = e || event; // to deal with IE
-      map[e.keyCode] = e.type == 'keydown';
-
-      spaceKeyDown = map[32];
-      leftKeyDown = map[37];
-      rightKeyDown = map[39];
-      downKeyDown = map[40];
-
-      if(leftKeyDown) {
-        $(".my-left-col p").css("background-color", "#007bff");
-        if(spaceKeyDown) {
-          console.log("Left + Space");
-          toggle();
-          // TODO logic to submit labeling
-        }  
-      } else { $(".my-left-col p").css("background-color", "inherit"); }
-
-      if(rightKeyDown) {
-        $(".my-right-col p").css("background-color", "#007bff");
-        if(spaceKeyDown) {
-          console.log("Right + Space");
-          toggle();
-          // TODO logic to submit labeling
-        }  
-      } else { $(".my-right-col p").css("background-color", "inherit"); }
-
-      if(downKeyDown) { 
-        $(".junk p").css("background-color", "#ff3300");
-        if(spaceKeyDown) {
-          console.log("Down + Space");
-          toggle();
-          // TODO logic to submit labeling
-        }
-      } else { $(".junk p").css("background-color", "inherit"); }
-  }
-</script>
-<script>
-// swipe functionality
-$(function(){
-  // Bind the swipeHandler callback function to the swipe event on div.box
-  $( ".tweet-wrapper img" ).on( "swipeleft", swipeHandlerLeft );
-  $( ".tweet-wrapper img" ).on( "swiperight", swipeHandlerRight );
-
-  // Callback function references the event target and adds the 'swipe' class to it
-  function swipeHandlerLeft( event ){
-    $( event.target ).addClass( "swipe" );
-    console.log("Swiped left!");
-  }
-  function swipeHandlerRight( event ){
-    $( event.target ).addClass( "swipe" );
-    console.log("Swiped right!");
-  }
-});
-</script>
+<script type="text/javascript" src="./js/swipe.js"></script>
 </body>
 </html>

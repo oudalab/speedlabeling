@@ -56,7 +56,9 @@ var untag = function(text) {
 
 // adds input's val to the selected tags array
 var onAdd = function(){
-  tagged.push($(".new-tag").val());
+  var value = $(".new-tag").val();
+  if(value == '') { return; }
+  tagged.push(value);
   $(".new-tag").val("");
   refresh();
 };

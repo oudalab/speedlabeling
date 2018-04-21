@@ -25,6 +25,7 @@ ul.nav-list {
 }
 .title {
   margin-bottom: 25px;
+  text-align: center;
 }
 .my-left-col p, .my-right-col p {
   margin-top: 250px;
@@ -32,6 +33,12 @@ ul.nav-list {
 .junk p {
   width: 50px;
   margin: auto;
+}
+.blue {
+  background-color: #007bff;
+}
+.red {
+  background-color: #ff3300;
 }
 @keyframes swipe-left {
     from {background-color: red;}

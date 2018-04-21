@@ -1,5 +1,12 @@
 * {
   font-size: 20px;
+  box-sizing: border-box;
+}
+html, body {
+  height: 100%;
+}
+body {
+  min-height: 100%;
 }
 ul.nav-list {
     list-style-type: none;
@@ -12,22 +19,38 @@ ul.nav-list {
 }
 .main {
   padding-top: 40px;
+  height: -moz-calc(100% - (60px));
+  height: -webkit-calc(100% - (60px));
+  height: calc(100% - (60px));
+  max-height: -moz-calc(100% - (60px));
+  max-height: -webkit-calc(100% - (60px));
+  max-height: calc(100% - (60px));
 }
-.my-left-col p, .my-right-col p {
-  text-align: center;
+.my-left-col, .my-right-col {
+  height: 100%;
+  box-sizing: border-box;
+  /*padding-bottom: 10px;*/
+}
+.my-left-col h3 {
+  height: 41.6px;
+}
+.my-left-col .input-group {
+  height: 46.6px;
 }
 .tweet-wrapper {
   height: 500px;
-  /*max-height: 500px;*/
 }
 .tweet-wrapper img {
   max-height: 100%;
 }
 .title {
+  height: 29px;
   margin-bottom: 25px;
+  text-align: center;
 }
 .my-left-col p, .my-right-col p {
   margin-top: 250px;
+  text-align: center;
 }
 .tag {
   margin-right: 10px;
@@ -43,4 +66,26 @@ ul.nav-list {
 }
 .add-button {
   
+}
+.row {
+  width: 100%;
+  height: -moz-calc(100% - (54px));
+  height: -webkit-calc(100% - (54px));
+  height: calc(100% - (54px));
+  padding-bottom: 25px;
+}
+.navbar {
+  height: 60px;
+  min-height: 60px;
+}
+.recommended {
+  height: calc(100% - (51.6px + 66.6px));
+}
+.tagged {
+  height: calc(100% - (51.6px));
+}
+.recommended, .tagged {
+  overflow: scroll;
+  /*min-height: 100%;*/
+  /*height: 100%;*/
 }

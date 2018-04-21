@@ -6,17 +6,40 @@
   <link rel="stylesheet" type="text/css" href="./css/styles.css">
 </head>
 <body>
-<div class="navbar">
-  <ul class="nav-list">
-    <li><a href="#">Home</a></li>
-    <li><a href="#">Labels</a></li>
-    <li><a href="#">Contact</a></li>
-    <li><a href="#">About</a></li>
-  </ul>
-</div>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="#">Speed Labeling</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Methods
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="./index.html">Two Class</a>
+          <a class="dropdown-item" href="./multi_class.html">Multi Class</a>
+          <a class="dropdown-item" href="./lasso.html">Image Selection</a>
+          <a class="dropdown-item" href="./text.html">Text Class</a>
+        </div>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#about">About</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#labels">Labels</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#contacts">Contact</a>
+      </li>
+    </ul>
+  </div>
+</nav>
 
 <div class="container main">
-  <h5 class="title">Use the left, right, and down arrow keys to pick a label. Press space bar to confirm your choice!</h5 class="title">
+  <h5 class="title">Hold the left, right, and down arrow keys to pick a label. Press space bar to confirm your choice!</h5 class="title">
   <div class="row">
     <div class="col my-left-col">
       <p>Unhealthy</p>
@@ -38,6 +61,7 @@
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-<script src="./js/two_class.js"></script>
+
+<script src="./js/index.js"></script>
 </body>
 </html>

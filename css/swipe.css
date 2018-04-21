@@ -33,6 +33,7 @@ ul.nav-list {
 }
 .title {
   margin-bottom: 25px;
+  text-align: center;
 }
 .my-left-col p, .my-right-col p {
   margin-top: 250px;
@@ -40,6 +41,12 @@ ul.nav-list {
 .junk p {
   width: 50px;
   margin: auto;
+}
+.blue {
+  background-color: #007bff;
+}
+.red {
+  background-color: #ff3300;
 }
 .swipe-left {
   transform: rotate(45deg);
@@ -51,6 +58,11 @@ ul.nav-list {
   -webkit-animation: r-animation 1s; /* Safari 4.0 - 8.0 */
   animation: r-animation 1s;
 }
+.swipe-down {
+  transform: rotate(-45deg);
+  -webkit-animation: d-animation 1s; /* Safari 4.0 - 8.0 */
+  animation: d-animation 1s;
+}
 @keyframes l-animation {
     from { left: 0px; }
     to { left: -1500px; }
@@ -58,4 +70,8 @@ ul.nav-list {
 @keyframes r-animation {
     from { right: 0px; }
     to { right: -1500px; }
+}
+@keyframes d-animation {
+    from { top: 0px; }
+    to { top: 1500px; }
 }

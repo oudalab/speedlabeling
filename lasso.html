@@ -3,7 +3,7 @@
 <head>
   <title>Speed Labeling</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-  <link rel="stylesheet" type="text/css" href="./css/swipe.css">
+  <link rel="stylesheet" type="text/css" href="./css/styles.css">
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -39,29 +39,29 @@
 </nav>
 
 <div class="container main">
-  <h5 class="title">Swipe left and right to choose the class!</h5 class="title">
-  <div class="row">
-    <div class="col my-left-col">
-      <p>Unhealthy</p>
-      <div id="left"></div>
-    </div>
+  <h5 class="title">Use the Lasso tool to select the relevant image section!</h5 class="title">
+  <div class="row"> 
     <div class="col-6 tweet-wrapper">
-      <img class="img1" src="./images/tweet.png" width="100%" />
-      <!-- <img class="img2" src="./images/tweet2.png" width="100%" style="display: none;" /> -->
+      <canvas id="c" width="800" height="800"></canvas>
     </div>
-    <div class="col my-right-col">
-      <p>Healthy</p>
-      <div id="right"></div>
+    <div class="col-6 menu">
+        <div id="confirm-menu" style="display: none;">
+          <p>Would you like to confirm your selection?</p>
+          <button type="button" class="yes btn btn-outline-success">Yes</button>
+          <button type="button" class="no btn btn-outline-danger">No</button>
+        </div>
+        <!-- <div id="submit-menu" style="display: none;">
+          <p>Would you like to submit your selection?</p>
+        </div> -->
     </div>
-  </div>
-  <div class="row">
-    <div class="junk col-lg-12 col-offset-6 centered"><p style="text-align: center;">Junk</p></div>
   </div>
 </div>
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-<script src="https://code.jquery.com/mobile/1.5.0-alpha.1/jquery.mobile-1.5.0-alpha.1.min.js"></script>
-<script type="text/javascript" src="./js/swipe.js"></script>
+<script src="http://cdnjs.cloudflare.com/ajax/libs/fabric.js/1.4.0/fabric.min.js"></script>
+
+<script src="./js/two_class.js"></script>
+<script src="./js/lasso.js"></script>
 </body>
 </html>

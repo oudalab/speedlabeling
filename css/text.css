@@ -1,66 +1,66 @@
 * {
   font-size: 20px;
-}
-ul.nav-list {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-}
-.nav-list li {
-  display: inline;
-  padding: 8px;
+  box-sizing: border-box;
 }
 .main {
   padding-top: 40px;
-}
-.my-left-col a, .my-right-col a {
-  text-align: center;
 }
 .title {
   margin-bottom: 25px;
   text-align: center;
   margin-top: 60px;
 }
-.my-left-col a, .my-right-col a {
-  margin-top: 250px;
+.card-body {
+  height: 300px;
+  max-height: 300px;
+  overflow-y: scroll;
+  overflow-x: hidden;
 }
 .label-row {
   margin-top: 15px;
+  margin-bottom: 30px;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+}
+.label {
+  flex-grow: 1;
+  padding-left: 15px;
+  padding-right: 15px;
+  margin-bottom: 15px;
 }
 .label-left {
-  width: 50%;
-  float: left;
+  order: 0;
 }
 .label-right {
-  width: 50%;
-  float: right;
+  order: 2;
 }
-.no {
-  /*margin-top: 15px;*/
-  float: right;
-  margin-right: 20px;
-  width: 60%;
+.label-down {
+  order: 1;
 }
-.yes {
-  /*float: right;*/
-  margin-left: 20px;
-  width: 60%;
+.no, .yes, .down {
+  width: 100%;
+}
+.no-solid, .yes-solid, .down-solid {
+  -webkit-transition-property: none;
+  -moz-transition-property: none;
+  -o-transition-property: none;
+  transition-property: none;
 }
 .no-solid {
   background-color: #dc3545;
-  border-color: #dc3545;
-  -webkit-transition-property: none;
-  -moz-transition-property: none;
-  -o-transition-property: none;
-  transition-property: none;
+  border-color: #dc3545; 
 }
 .yes-solid {
-  background-color: #007bff;
-  border-color: #007bff;
-  -webkit-transition-property: none;
-  -moz-transition-property: none;
-  -o-transition-property: none;
-  transition-property: none;
+  background-color: #28a745;
+  border-color: #28a745;
+}
+.down-solid {
+  background-color: #6c757d;
+  border-color: #6c757d;
+}
+.btn {
+  transition: none;
 }
 .blue {
   background-color: #007bff;
@@ -70,4 +70,20 @@ ul.nav-list {
 }
 .text-red {
   color: #ff3300;
+}
+@media only screen and (max-width: 600px) {
+  .label {
+    width: 50%;
+    flex-basis: 50%;
+  }
+  .label-left {
+    order: 0;
+  }
+  .label-right {
+    order: 1;
+  }
+  .label-down {
+    order: 2;
+    max-width: 50%;
+  }
 }

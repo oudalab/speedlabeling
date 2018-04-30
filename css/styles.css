@@ -1,14 +1,8 @@
 * {
   font-size: 20px;
 }
-ul.nav-list {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-}
-.nav-list li {
-  display: inline;
-  padding: 8px;
+body {
+  overflow: hidden;
 }
 .main {
   padding-top: 40px;
@@ -18,10 +12,12 @@ ul.nav-list {
 }
 .tweet-wrapper {
   height: 500px;
-  /*max-height: 500px;*/
 }
 .tweet-wrapper img {
   max-height: 100%;
+  position: absolute;
+  transition: 1s ;
+  z-index: 20;
 }
 .title {
   margin-bottom: 25px;
@@ -40,7 +36,30 @@ ul.nav-list {
 .red {
   background-color: #ff3300;
 }
-@keyframes swipe-left {
-    from {background-color: red;}
-    to {background-color: yellow;}
+.swipe-left {
+  transform: rotate(45deg);
+  -webkit-animation: l-animation 1s; /* Safari 4.0 - 8.0 */
+  animation: l-animation 1s;
+}
+.swipe-right {
+  transform: rotate(-45deg);
+  -webkit-animation: r-animation 1s; /* Safari 4.0 - 8.0 */
+  animation: r-animation 1s;
+}
+.swipe-down {
+  transform: rotate(-45deg);
+  -webkit-animation: d-animation 1s; /* Safari 4.0 - 8.0 */
+  animation: d-animation 1s;
+}
+@keyframes l-animation {
+    from { left: 0px; }
+    to { left: -1500px; }
+}
+@keyframes r-animation {
+    from { right: 0px; }
+    to { right: -1500px; }
+}
+@keyframes d-animation {
+    from { top: 0px; }
+    to { top: 1500px; }
 }

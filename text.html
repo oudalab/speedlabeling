@@ -2,8 +2,10 @@
 <html>
 <head>
   <title>Speed Labeling</title>
+  <meta charset="UTF-8">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
   <link rel="stylesheet" type="text/css" href="./css/text.css">
+  <link rel="stylesheet" type="text/css" href="./css/header.css">
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -25,61 +27,45 @@
           <a class="dropdown-item" href="./text.html">Text Class</a>
         </div>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">About</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Labels</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Contact</a>
-      </li>
+      <li class="nav-item"><a class="nav-link" href="#">About</a></li>
+      <li class="nav-item"><a class="nav-link" href="#">Labels</a></li>
+      <li class="nav-item"><a class="nav-link" href="#">Contact</a></li>
     </ul>
   </div>
 </nav>
 
-
 <div class="container main">
-  <h5 class="title">Hold the left and right arrow keys to select. Press space bar to confirm your choice!</h5 class="title">
+  <h5 class="title">Hold the left, right, and down arrow keys to select. Press space bar to confirm your choice!</h5 class="title">
   <div class="row">
     <div class="col my-left-col">
-      <!-- <p>No</p>
-      <div id="left"></div> -->
     </div>
     <div class="col-10">
-      <!-- <p id="pos_tag"></p> -->
-      <div class="card">
+      <div class="card tag-text">
         <div class="card-header">Text 1</div>
         <div class="card-body">
           <p id="pos_tag" class="card-text"></p>
         </div>
       </div>
       <div class="label-row">
-        <div class="label-left" style="">
-          <a class="btn btn-outline-danger no">No</a>
-          
+        <div class="label label-left">
+          <a class="btn btn-outline-danger no" onclick="submit(docNum, 'reject')">No</a>
         </div>
-        <div class="label-right" style="">
-          <a class="btn btn-outline-primary yes">Yes</a>
-          
+        <div class="label label-right">
+          <a class="btn btn-outline-success yes" onclick="submit(docNum, 'accept')">Yes</a>
         </div>
-        
+        <div class="label label-down">
+          <a class="btn btn-outline-secondary down" onclick="submit(docNum, 'n/a')">Junk</a>
+        </div>
       </div>
     </div>
-    <div class="col my-right-col">
-      <!--<p>Yes</p>
-      <a class="btn btn-outline-primary"></a>
-      <div id="right"></div> -->
-    </div> 
+    <div class="col my-right-col"></div> 
   </div>
- <!--  <div class="row label-row col-10">
-    <a class="btn btn-outline-danger">No</a>
-    <a class="btn btn-primary">Yes</a>
-  </div> -->
 </div>
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<script type="text/javascript" src="./js/text_input.js"></script>
 <script src="./js/text.js"></script>
+<!-- <script type="text/javascript" src="./js/text_output.js"></script> -->
 </body>
 </html>

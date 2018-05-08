@@ -3,17 +3,17 @@
   box-sizing: border-box;
 }
 .main {
-  padding-top: 40px;
+  padding-top: 20px;
 }
 .title {
   margin-bottom: 25px;
   text-align: center;
-  margin-top: 60px;
+  /*margin-top: 60px;*/
 }
 .card-body {
-  height: 300px;
-  max-height: 300px;
-  overflow-y: scroll;
+  height: 250px;
+  max-height: 250px;
+  overflow-y: auto;
   overflow-x: hidden;
 }
 .label-row {
@@ -40,6 +40,34 @@
 }
 .no, .yes, .down {
   width: 100%;
+}
+.previous {
+  position: fixed;
+  top: 50%;
+  left: 0px;
+}
+.next {
+  position: fixed;
+  top: 50%;
+  right: 0px;
+}
+.next-hover, .previous-hover {
+  color: #212529;
+  background-color: #e2e6ea;
+  border-color: #dae0e5;
+}
+.hotkey-bar {
+  position: relative;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.hotkey-tip {
+  /*margin-right: 30px;*/
+
 }
 .no-solid, .yes-solid, .down-solid {
   -webkit-transition-property: none;
@@ -85,5 +113,8 @@
   .label-down {
     order: 2;
     max-width: 50%;
+  }
+  .hotkey-bar {
+    display: none;
   }
 }

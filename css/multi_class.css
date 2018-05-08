@@ -73,7 +73,7 @@ body {
   height: calc(100% - (51.6px));
 }
 .recommended, .tagged {
-  overflow-y: scroll;
+  overflow-y: auto;
   overflow-x: hidden;
   /*min-height: 100%;*/
   /*height: 100%;*/

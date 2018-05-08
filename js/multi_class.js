@@ -4,32 +4,32 @@ var recommended = ["copper", "explain", "educated", "tenuous", "unite", "decisiv
 var tagged = [];
 
 // updates the recommended classes
-var refreshRecommended = function() {
+function refreshRecommended() {
   var recContainer = $(".recommended");
   recContainer.empty();
   recommended.forEach(function(tag) {
     recContainer.append('<button type="button" class="tag btn btn-outline-primary"\
       onclick="tag(this.innerText)">' + tag + '</button>');
   });
-};
+}
 
 // updates the selected classes
-var refreshTagged = function() {
+function refreshTagged() {
   var taggedContainer = $(".tagged");
   taggedContainer.empty();
   tagged.forEach(function(tag) {
     taggedContainer.append('<button type="button" class="tag remove-tag btn btn-outline-danger"\
       onclick="untag(this.innerText)">' + tag + '</button>');
   });
-};
+}
 
 // updates the view based on the new data in the arrays
-var refresh = function() {
+function refresh() {
   refreshRecommended();
   refreshTagged();
-};
+}
 
-var tag = function(text) {
+function tag(text) {
   console.log(text);
   // add to tagged list
   tagged.push(text);
@@ -39,9 +39,9 @@ var tag = function(text) {
     recommended.splice(index, 1);
   }
   refresh();
-};
+}
 
-var untag = function(text) {
+function untag(text) {
   // var text = element.innerText;
   console.log(text);
   // add to recommended list
@@ -52,38 +52,37 @@ var untag = function(text) {
     tagged.splice(index, 1);
   }
   refresh();
-};
+}
 
 // adds input's val to the selected tags array
-var onAdd = function(){
+function onAdd(){
   var value = $(".new-tag").val();
   if(value == '') { return; }
   tagged.push(value);
   $(".new-tag").val("");
   refresh();
-};
+}
 
-// bind an event to the input textbox
-$('.new-tag').on('keypress', function (e) {
-  if(e.which === 13) { // Enter key
-    // Disable textbox to prevent multiple submit
-    $(this).attr("disabled", "disabled");
-
-    // add to selected tags array
+// adding a tag by pressing enter key in input
+function onEnter(event) {
+  if(event.key == 'Enter') {
     onAdd();
-
-    //Enable the textbox again if needed.
-    $(this).removeAttr("disabled");
-
-    // return focus to input
-    $(".new-tag").focus();
   }
-});
+}
 
-var submit = function() {
+function submit() {
   // TODO
-  alert("Submitting " + tagged)
-};
+  alert("Submitting " + tagged);
+  location.reload();
+}
+
+document.onkeyup = function(e) {
+  var code = e.keyCode ? e.keyCode : e.which;
+  // check if space key pressed and focus is not on the input
+  if (code === 32 && !$(".new-tag").is(":focus")) {
+      submit();
+  }
+}
 
 refresh();
 

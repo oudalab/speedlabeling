@@ -40,7 +40,8 @@
     <div class="col my-left-col">
       <h3>Recommended</h3>
       <div class="new-tag-group input-group mb-3">
-        <input type="text" class="form-control new-tag" placeholder="Add a tag">
+        <input type="text" class="form-control new-tag" 
+          placeholder="Add a tag" onkeypress="onEnter(event)">
         <div class="input-group-append">
           <button onclick="onAdd()" class="add-button btn btn-outline-secondary" type="button">
             <i class="fa fa-plus"></i>

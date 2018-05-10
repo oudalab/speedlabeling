@@ -38,7 +38,7 @@
 .label-down {
   order: 1;
 }
-.no, .yes, .down {
+.btn-left, .btn-right, .btn-down {
   width: 100%;
 }
 .previous {
@@ -69,21 +69,21 @@
   /*margin-right: 30px;*/
 
 }
-.no-solid, .yes-solid, .down-solid {
+.btn-left-solid, .btn-right-solid, .btn-down-solid {
   -webkit-transition-property: none;
   -moz-transition-property: none;
   -o-transition-property: none;
   transition-property: none;
 }
-.no-solid {
+.btn-left-solid {
   background-color: #dc3545;
   border-color: #dc3545; 
 }
-.yes-solid {
+.btn-right-solid {
   background-color: #28a745;
   border-color: #28a745;
 }
-.down-solid {
+.btn-down-solid {
   background-color: #6c757d;
   border-color: #6c757d;
 }

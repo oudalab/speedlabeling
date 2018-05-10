@@ -1,4 +1,6 @@
-var inputString = "";
+var inputString = '';
+var classType = '';
+
 function addData(data) {
   inputString += data;
 }
@@ -26,6 +28,11 @@ function handleFileSelect(evt) {
 }
 function submit() {
   // save email
+  if(!classType) {
+    alert('Please select the classification type.');
+    return;
+  }
+
   var email = $('#inputEmail').val();
   sessionStorage.setItem('active_coder', email);
 
@@ -33,8 +40,50 @@ function submit() {
   var label = $('#inputLabel').val();
   sessionStorage.setItem('label', label);
 
-  // navigate to text.html
-  window.location.href = './text.html';
+  if(classType === 'binary') {
+    var leftLabel = $('#leftLabel').val();
+    sessionStorage.setItem('leftLabel', leftLabel);
+
+    var downLabel = $('#downLabel').val();
+    sessionStorage.setItem('downLabel', downLabel);
+
+    var rightLabel = $('#rightLabel').val();
+    sessionStorage.setItem('rightLabel', rightLabel);
+
+    // navigate to text.html
+    var validInput = email && label && leftLabel && downLabel && rightLabel;
+    if(validInput) {
+      window.location.href = './text.html';
+    } else {
+      alert('Please fill out all fields.');
+    }
+  } 
+  else if (classType === 'multi') {
+    var multiLabel = $('#multiLabel').val();
+    sessionStorage.setItem('multiLabel', multiLabel);
+
+    var validInput = email && label && multiLabel;
+    if(validInput) {
+      window.location.href = './multi_class.html';
+    } else {
+      alert('Please fill out all fields.');
+    }
+  }
+}
+function loadTagSection(type) {
+  $('.tags').show();
+  if(type === 'binary') {
+    classType = 'binary';
+    $('.class-picker').text('Binary');
+    $('.multi').hide();
+    $('.binary').show();
+  }
+  else {
+    classType = 'multi';
+    $('.class-picker').text('Multi');
+    $('.binary').hide();
+    $('.multi').show();
+  }
 }
 
 $('#files').on('change', handleFileSelect);

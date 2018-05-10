@@ -5,18 +5,16 @@
 
 var map = {};
 var docNum = 0;
+var load_time = 0;
 
 function submit(docNum, answer) {
-  var date = (new Date()).toISOString().slice(0,10).replace(/-/g,"");
-  // var label = ""; // TODO
   var _input_hash = ""; // TODO
   var _task_hash = ""; // TODO
-  updateLabel(docNum, date, label, answer, _input_hash, _task_hash);
+  updateLabel(docNum, label, answer, load_time, _input_hash, _task_hash);
   reloadDoc(docNum+1);
 }
-
 function initDownloadBtn(text) {
-  var exportFilename = 'export_' + Date.now() + '.jsonl';
+  var exportFilename = 'export_' + Date.now() + '.json';
   var downloadLink = $('.download-btn');
   downloadLink.attr('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
   downloadLink.attr('download', exportFilename);
@@ -27,10 +25,11 @@ function reloadDoc(docNum) {
     var doc = inputDocs[docNum];
     $('.card-header').html(docNum+1 + ' / ' + inputDocs.length);
     $('#pos_tag').html(doc.text);
-    outputDocs[docNum].load_time = Date.now();
+    load_time = Date.now();
     $('.label-row').show();
     $('.download').hide();
-  } else if(docNum == inputDocs.length) {
+  } 
+  else if(docNum == inputDocs.length) {
     $('.card-header').html('No more documents.');
     $('#pos_tag').html('');
     $('.label-row').toggle(); // hide buttons
@@ -68,39 +67,39 @@ document.onkeydown = document.onkeyup = function(e){
     kKeyUp = e.keyCode == 75 && e.type == 'keyup';
 
     if(leftKeyDown) {
-      $('.no').addClass('no-solid');
+      $('.btn-left').addClass('btn-left-solid');
 
       if(spaceKeyDown) {
         // Left + Space
         if(docNum < inputDocs.length){
-          submit(docNum++, "reject");
+          submit(docNum++, leftLabel);
         }
       }  
-    } else { $('.no').removeClass('no-solid'); }
+    } else { $('.btn-left').removeClass('btn-left-solid'); }
 
 
     if(rightKeyDown) {
-      $('.yes').addClass('yes-solid');
+      $('.btn-right').addClass('btn-right-solid');
 
       if(spaceKeyDown) {
         // Right + Space
         if(docNum < inputDocs.length){
-          submit(docNum++, "accept");
+          submit(docNum++, rightLabel);
         }
       }  
-    } else { $('.yes').removeClass('yes-solid'); }
+    } else { $('.btn-right').removeClass('btn-right-solid'); }
 
 
     if(downKeyDown) {
-      $('.down').addClass('down-solid');
+      $('.btn-down').addClass('btn-down-solid');
 
       if(spaceKeyDown) {
         // Down + Space
         if(docNum < inputDocs.length){
-          submit(docNum++, "n/a");
+          submit(docNum++, downLabel);
         }
       }  
-    } else { $('.down').removeClass('down-solid'); }
+    } else { $('.btn-down').removeClass('btn-down-solid'); }
 
     if(jKeyDown) {
       $('.previous').addClass('previous-hover');
@@ -120,5 +119,13 @@ $(function(){
   // load active coder
   $('.navbar-text').html(active_coder);
   $('.title').html('Topic: ' + label);
+  $('.btn-left').text(leftLabel);
+  $('.btn-down').text(downLabel);
+  $('.btn-right').text(rightLabel);
+
+  $('.tip-left').text(' : ' + leftLabel);
+  $('.tip-down').text(' : ' + downLabel);
+  $('.tip-right').text(' : ' + rightLabel);
+
   reloadDoc(docNum);
 });

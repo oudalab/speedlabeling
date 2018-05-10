@@ -19,6 +19,12 @@ trash can instead of 'Junk'
 Take any email (validate) 
 Try to upload local JSONL file
 Save export file locally
+change .jsonl to .json
+don't update date, map from input to output
+update load_time only if a decision is made
+Specify tags instead of yes/no/junk, put that tag as value for "answer" key
+Specify label_type (binary, multi, etc)
+Specify tag for binary or multiple tags for multi
 
 TODO:
 Multi class mobile friendly
@@ -29,24 +35,13 @@ if twitter, insta, jpg, assume url attribute
 
 Use Twitter url and API for now
 
-Specify label_type (binary, multi, etc)
-
-Specify tag for binary
-or multiple tags for multi
-
-Work on specific text highlighting tagger after this, then image segmentation
-
 Specify multiple tags (comma, semicolon separated)
 
-Specify tags instead of yes/no/junk, put that tag as value for "answer" key
-
-don't update date, map from input to output
-
-fail message if data too large for sesssion storage
-
-update load_time only if a decision is made
+fail message if data too large for session storage
 
 save output.json to local storage
+
+Work on specific text highlighting tagger after this, then image segmentation
 
 */
 
@@ -62,14 +57,14 @@ function exportDocs() {
   });
   return exportString;
 }
-function updateLabel(docNum, date, label, answer, _input_hash, _task_hash) {
+function updateLabel(docNum, label, answer, load_time, _input_hash, _task_hash) {
   if(docNum < inputDocs.length) {
     var outDoc = outputDocs[docNum];
-    outDoc.date = date;
     outDoc.label = label;
     outDoc._input_hash = _input_hash;
     outDoc._task_hash = _task_hash;
     outDoc.answer = answer;
+    outDoc.load_time = load_time;
     outDoc.submit_time = Date.now();
     outDoc.time_taken = outDoc.submit_time - outDoc.load_time;
   }
@@ -78,7 +73,10 @@ function updateLabel(docNum, date, label, answer, _input_hash, _task_hash) {
 var input = loadInput();
 var active_coder = sessionStorage.getItem('active_coder');
 var label = sessionStorage.getItem('label');
-console.log(label);
+var leftLabel = sessionStorage.getItem('leftLabel');
+var downLabel = sessionStorage.getItem('downLabel');
+var rightLabel = sessionStorage.getItem('rightLabel');
+
 
 // Format is JSONL, split on the newline and parse to JSON
 var inputDocs = input.split('\n').reduce(function(result, jsonStr) {
@@ -100,6 +98,7 @@ inputDocs.forEach(function(inputDoc){
   outputDoc.text = inputDoc.text;
   outputDoc.coders = inputDoc.coders;
   outputDoc.active_coder = active_coder;
+  outputDoc.date = inputDoc.date;
 
   outputDocs.push(outputDoc);
 });

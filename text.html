@@ -52,14 +52,16 @@
         </div>
         <div class="label-row">
           <div class="label label-left">
-            <a class="btn btn-outline-danger no" onclick="submit(docNum++, 'reject')">No</a>
+            <a class="btn btn-outline-danger btn-left" 
+              onclick="submit(docNum++, 'reject')"></a>
           </div>
           <div class="label label-right">
-            <a class="btn btn-outline-success yes" onclick="submit(docNum++, 'accept')">Yes</a>
+            <a class="btn btn-outline-success btn-right" 
+              onclick="submit(docNum++, 'accept')"></a>
           </div>
           <div class="label label-down">
-            <a class="btn btn-outline-secondary down" onclick="submit(docNum++, 'n/a')">
-              <i class="fas fa-trash-alt"></i>
+            <a class="btn btn-outline-secondary btn-down" 
+              onclick="submit(docNum++, 'n/a')">
             </a>
           </div>
         </div>
@@ -69,32 +71,21 @@
   </div>
   <button type="button" class="previous btn btn-light" onclick="previous()">Previous</button>
   <button type="button" class="next btn btn-light" onclick="next()">Next</button>
-  <!-- <iframe src="http://www.espn.com/"></iframe> -->
-  <!-- <input type="file" id="files" name="files[]" multiple /> -->
-  <!-- <output id="list"></output> -->
 
-  <!-- <script>
-    function handleFileSelect(evt) {
-      var files = evt.target.files; // FileList object
-
-      // files is a FileList of File objects. List some properties.
-      var output = [];
-      for (var i = 0, f; f = files[i]; i++) {
-        output.push('<li><strong>', escape(f.name), '</strong> (', f.type || 'n/a', ') - ',
-                    f.size, ' bytes, last modified: ',
-                    f.lastModifiedDate ? f.lastModifiedDate.toLocaleDateString() : 'n/a',
-                    '</li>');
-      }
-      document.getElementById('list').innerHTML = '<ul>' + output.join('') + '</ul>';
-    }
-
-    document.getElementById('files').addEventListener('change', handleFileSelect, false);
-  </script> -->
   <footer class="footer">
     <div class="hotkey-bar container">
-      <span class="hotkey-tip"><b>Hold <i class="fas fa-arrow-left"></i></b> : No</span>
-      <span class="hotkey-tip"><b>Hold <i class="fas fa-arrow-down"></i></b> : Junk</span>
-      <span class="hotkey-tip"><b>Hold <i class="fas fa-arrow-right"></i></b> : Yes</span>
+      <span class="hotkey-tip">
+        <b>Hold <i class="fas fa-arrow-left"></i></b>
+        <span class="tip-left"></span>
+      </span>
+      <span class="hotkey-tip">
+        <b>Hold <i class="fas fa-arrow-down"></i></b>
+        <span class="tip-down"></span>
+      </span>
+      <span class="hotkey-tip">
+        <b>Hold <i class="fas fa-arrow-right"></i></b>
+        <span class="tip-right"></span>
+      </span>
       <span class="hotkey-tip"><b>Space Bar</b> : Submit</span>
       <span class="hotkey-tip"><b>j</b> : Previous</span>
       <span class="hotkey-tip"><b>k</b> : Next</span>

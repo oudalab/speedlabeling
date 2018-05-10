@@ -1,6 +1,4 @@
-var recommended = ["copper", "explain", "educated", "tenuous", "unite", "decisive", 
-  "accidental", "chin", "mountain", "wholesale", "wound", "staking",
-  "zephyr", "stir", "probable", "two"];
+var recommended = sessionStorage.getItem('multiLabel').split(';');
 var tagged = [];
 
 // updates the recommended classes
@@ -42,8 +40,6 @@ function tag(text) {
 }
 
 function untag(text) {
-  // var text = element.innerText;
-  console.log(text);
   // add to recommended list
   recommended.push(text);
   // remove from tagged list
@@ -84,5 +80,6 @@ document.onkeyup = function(e) {
   }
 }
 
-refresh();
-
+$(function(){
+  refresh();
+});

@@ -1,0 +1,18 @@
+* {
+  font-size: 20px;
+  box-sizing: border-box;
+}
+.main {
+  padding-top: 20px;
+}
+.binary, .multi {
+	margin-top: 20px;
+	margin-left: 20px;
+}
+.binary > input {
+	width: 50%;
+	margin-bottom: 15px;
+}
+.multi > input {
+	width: 100%;
+}

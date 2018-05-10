@@ -3,7 +3,7 @@
   <title>Speed Labeling</title>
   <meta charset="UTF-8">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-  <link rel="stylesheet" type="text/css" href="./css/text.css">
+  <link rel="stylesheet" type="text/css" href="./css/login.css">
   <link rel="stylesheet" type="text/css" href="./css/header.css">
   <link rel="stylesheet" type="text/css" href="./css/footer.css">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.11/css/all.css" integrity="sha384-p2jx59pefphTFIpeqCcISO9MdVfIm4pNnsL08A6v5vaQc4owkQqxMV8kg4Yvhaw/" crossorigin="anonymous">
@@ -36,14 +36,43 @@
 
   <div class="container main">
     <form>
+      <!-- Email input -->
       <div class="form-group">
         <label for="inputEmail">Email address</label>
         <input type="email" class="form-control" id="inputEmail" placeholder="Enter your email" />
       </div>
+      <!-- Label input -->
       <div class="form-group">
         <label for="inputLabel">Label</label>
         <input type="text" class="form-control" id="inputLabel" placeholder="Enter your label" />
       </div>
+      <!-- Pick type of classification (binary, multi) -->
+      <div class="form-group">
+        <label for="inputLabel">Choose Classification Type</label>
+        <div class="dropdown show">
+          <a class="class-picker btn btn-secondary dropdown-toggle" href="#" role="button" 
+            id="dropdownMenuLink" data-toggle="dropdown" 
+            aria-haspopup="true" aria-expanded="false">
+            Type
+          </a>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+            <a class="dropdown-item" onclick="loadTagSection('binary')">Binary</a>
+            <a class="dropdown-item" onclick="loadTagSection('multi')">Multi</a>
+          </div>
+        </div>
+        <div class="tags" style="display: none;">
+          <div class="binary" style="display: none;">
+            <input type="text" class="form-control" id="leftLabel" placeholder="Left tag" />
+            <input type="text" class="form-control" id="downLabel" placeholder="Down tag" />
+            <input type="text" class="form-control" id="rightLabel" placeholder="Right tag" />
+          </div>
+          <div class="multi" style="display: none;">
+            <p>Enter labels separated by semicolons</p>
+            <input type="text" class="form-control" id="multiLabel" placeholder="Labels" />
+          </div>
+        </div>
+      </div>
+      <!-- File picker -->
       <div class="form-group">
         <label for="exampleInputFile">File input</label>
         <input type="file" class="form-control-file" id="files" 

@@ -8,7 +8,6 @@
 .title {
   margin-bottom: 25px;
   text-align: center;
-  /*margin-top: 60px;*/
 }
 .card-body {
   height: 250px;
@@ -64,10 +63,6 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-}
-.hotkey-tip {
-  /*margin-right: 30px;*/
-
 }
 .btn-left-solid, .btn-right-solid, .btn-down-solid {
   -webkit-transition-property: none;

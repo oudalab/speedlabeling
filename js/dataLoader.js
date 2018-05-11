@@ -127,7 +127,7 @@ function DataLoader(type) {
     outputDoc.label = this.label;
 
     outputDoc.active_coder = this.active_coder;
-    if(type === 'binary') {
+    if(type === 'trinary') {
       outputDoc.edited = [];
     }
 

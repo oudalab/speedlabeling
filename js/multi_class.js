@@ -1,4 +1,5 @@
 var recommended = sessionStorage.getItem('multiLabel').split(';');
+// TODO catch error for missing multiLabel key in session storage
 var tagged = [];
 
 // updates the recommended classes

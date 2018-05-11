@@ -25,17 +25,19 @@ update load_time only if a decision is made
 Specify tags instead of yes/no/junk, put that tag as value for "answer" key
 Specify label_type (binary, multi, etc)
 Specify tag for binary or multiple tags for multi
+Specify multiple tags (comma, semicolon separated)
+record changelog
+
 
 TODO:
+gif of execution on README
+docs for CSS, JS
+if twitter, insta, jpg, assume url attribute
+Use Twitter url and API for now
+
 Multi class mobile friendly
 
 srctype = ["twitter", 'instagram','jpg','text']
-
-if twitter, insta, jpg, assume url attribute
-
-Use Twitter url and API for now
-
-Specify multiple tags (comma, semicolon separated)
 
 fail message if data too large for session storage
 
@@ -57,16 +59,24 @@ function exportDocs() {
   });
   return exportString;
 }
-function updateLabel(docNum, label, answer, load_time, _input_hash, _task_hash) {
+function updateLabel(docNum, answer, load_time, _input_hash, _task_hash) {
   if(docNum < inputDocs.length) {
     var outDoc = outputDocs[docNum];
-    outDoc.label = label;
+    // outDoc.label = label;
     outDoc._input_hash = _input_hash;
     outDoc._task_hash = _task_hash;
-    outDoc.answer = answer;
-    outDoc.load_time = load_time;
-    outDoc.submit_time = Date.now();
-    outDoc.time_taken = outDoc.submit_time - outDoc.load_time;
+
+    var change = {
+      answer: answer,
+      load_time: load_time,
+      submit_time: Date.now()
+    };
+    change.time_taken = change.submit_time - change.load_time;
+    // change.answer = answer;
+    // change.load_time = load_time;
+    // change.submit_time = Date.now();
+    // change.time_taken = change.submit_time - change.load_time;
+    outDoc.edited.push(change);
   }
 }
 
@@ -93,12 +103,17 @@ var inputDocs = input.split('\n').reduce(function(result, jsonStr) {
 var outputDocs = [];
 inputDocs.forEach(function(inputDoc){
   outputDoc = {};
+
+  // direct mappings from input to output
   outputDoc.id = inputDoc.id;
   outputDoc.source = inputDoc.source;
   outputDoc.text = inputDoc.text;
   outputDoc.coders = inputDoc.coders;
-  outputDoc.active_coder = active_coder;
   outputDoc.date = inputDoc.date;
+  outputDoc.label = label;
+
+  outputDoc.active_coder = active_coder;
+  outputDoc.edited = [];
 
   outputDocs.push(outputDoc);
 });

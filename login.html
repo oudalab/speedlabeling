@@ -43,8 +43,8 @@
       </div>
       <!-- Label input -->
       <div class="form-group">
-        <label for="inputLabel">Label</label>
-        <input type="text" class="form-control" id="inputLabel" placeholder="Enter your label" />
+        <label for="inputLabel">Theme</label>
+        <input type="text" class="form-control" id="inputLabel" placeholder="Foodborne Illness Tweets" />
       </div>
       <!-- Pick type of classification (binary, multi) -->
       <div class="form-group">
@@ -62,13 +62,14 @@
         </div>
         <div class="tags" style="display: none;">
           <div class="binary" style="display: none;">
-            <input type="text" class="form-control" id="leftLabel" placeholder="Left tag" />
-            <input type="text" class="form-control" id="downLabel" placeholder="Down tag" />
-            <input type="text" class="form-control" id="rightLabel" placeholder="Right tag" />
+            <input type="text" class="form-control" id="leftLabel" placeholder="No" />
+            <input type="text" class="form-control" id="downLabel" placeholder="Junk" />
+            <input type="text" class="form-control" id="rightLabel" placeholder="Yes" />
           </div>
           <div class="multi" style="display: none;">
             <p>Enter labels separated by semicolons</p>
-            <input type="text" class="form-control" id="multiLabel" placeholder="Labels" />
+            <input type="text" class="form-control" id="multiLabel" 
+              placeholder="noun;verb;adjective" />
           </div>
         </div>
       </div>

@@ -10,7 +10,7 @@ var load_time = 0;
 function submit(docNum, answer) {
   var _input_hash = ""; // TODO
   var _task_hash = ""; // TODO
-  updateLabel(docNum, label, answer, load_time, _input_hash, _task_hash);
+  updateLabel(docNum, answer, load_time, _input_hash, _task_hash);
   reloadDoc(docNum+1);
 }
 function initDownloadBtn(text) {

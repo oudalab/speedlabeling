@@ -7,6 +7,7 @@
   <link href="https://use.fontawesome.com/releases/v5.0.7/css/all.css" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="./css/multi_class.css">
   <link rel="stylesheet" type="text/css" href="./css/header.css">
+  <link rel="stylesheet" type="text/css" href="./css/footer.css">
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -31,6 +32,7 @@
       <li class="nav-item"><a class="nav-link" href="#">Labels</a></li>
       <li class="nav-item"><a class="nav-link" href="#">Contact</a></li>
     </ul>
+    <span class="navbar-text"></span>
   </div>
 </nav>
 
@@ -43,7 +45,8 @@
         <input type="text" class="form-control new-tag" 
           placeholder="Add a tag" onkeypress="onEnter(event)">
         <div class="input-group-append">
-          <button onclick="onAdd()" class="add-button btn btn-outline-secondary" type="button">
+          <button onclick="onAdd()" 
+            class="add-button btn btn-outline-secondary" type="button">
             <i class="fa fa-plus"></i>
           </button>
         </div>
@@ -51,12 +54,19 @@
       <div class="recommended"></div>  
     </div> 
     <div class="col col-6 tweet-wrapper">
-      <img class="img1" src="./images/tweet.png" width="100%" />
-      <img class="img2" src="./images/tweet2.png" width="100%" style="display: none;" />
-      <button onclick="submit()" 
+      <div class="card tag-text">
+        <div class="card-header">Text 1</div>
+        <div class="card-body">
+          <p id="text" class="card-text"></p>
+          <div class="download" style="display: none;">
+            <a class="download-btn btn btn-success">Download</a>
+          </div>
+        </div>
+      </div>
+      <button onclick="submit(docNum++, tagged)" 
         type="button" 
         class="submit-button btn btn-outline-success">
-        Submit
+        Save Selections
       </button>
     </div>
     <div class="col my-right-col">
@@ -66,9 +76,20 @@
     
   </div>
 </div>
+<button type="button" class="previous btn btn-light" onclick="previous()">Previous</button>
+<button type="button" class="next btn btn-light" onclick="next()">Next</button>
+
+<footer class="footer">
+  <div class="hotkey-bar container">
+    <span class="hotkey-tip"><b>Shift + Enter</b> : Save Selections</span>
+    <span class="hotkey-tip"><b>j</b> : Previous</span>
+    <span class="hotkey-tip"><b>k</b> : Next</span>
+  </div>
+</footer>
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<script src="./js/dataLoader.js"></script>
 <script src="./js/multi_class.js"></script>
 </body>
 </html>

@@ -44,9 +44,9 @@
       <!-- Label input -->
       <div class="form-group">
         <label for="inputLabel">Theme</label>
-        <input type="text" class="form-control" id="inputLabel" placeholder="Foodborne Illness Tweets" />
+        <input type="text" class="form-control" id="inputLabel" placeholder="Ex: Foodborne Illness Tweets" />
       </div>
-      <!-- Pick type of classification (binary, multi) -->
+      <!-- Pick type of classification (trinary, multi) -->
       <div class="form-group">
         <label for="inputLabel">Choose Classification Type</label>
         <div class="dropdown show">
@@ -56,20 +56,20 @@
             Type
           </a>
           <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-            <a class="dropdown-item" onclick="loadTagSection('binary')">Binary</a>
+            <a class="dropdown-item" onclick="loadTagSection('trinary')">Trinary</a>
             <a class="dropdown-item" onclick="loadTagSection('multi')">Multi</a>
           </div>
         </div>
         <div class="tags" style="display: none;">
-          <div class="binary" style="display: none;">
-            <input type="text" class="form-control" id="leftLabel" placeholder="No" />
-            <input type="text" class="form-control" id="downLabel" placeholder="Junk" />
-            <input type="text" class="form-control" id="rightLabel" placeholder="Yes" />
+          <div class="trinary" style="display: none;">
+            <input type="text" class="form-control" id="leftLabel" placeholder="Ex: No" />
+            <input type="text" class="form-control" id="downLabel" placeholder="Ex: Junk" />
+            <input type="text" class="form-control" id="rightLabel" placeholder="Ex: Yes" />
           </div>
           <div class="multi" style="display: none;">
             <p>Enter labels separated by semicolons</p>
             <input type="text" class="form-control" id="multiLabel" 
-              placeholder="noun;verb;adjective" />
+              placeholder="Ex: noun;verb;adjective" />
           </div>
         </div>
       </div>

@@ -40,7 +40,7 @@ function submit() {
   var label = $('#inputLabel').val();
   sessionStorage.setItem('label', label);
 
-  if(classType === 'binary') {
+  if(classType === 'trinary') {
     var leftLabel = $('#leftLabel').val();
     sessionStorage.setItem('leftLabel', leftLabel);
 
@@ -72,16 +72,16 @@ function submit() {
 }
 function loadTagSection(type) {
   $('.tags').show();
-  if(type === 'binary') {
-    classType = 'binary';
-    $('.class-picker').text('Binary');
+  if(type === 'trinary') {
+    classType = 'trinary';
+    $('.class-picker').text('Trinary');
     $('.multi').hide();
-    $('.binary').show();
+    $('.trinary').show();
   }
   else {
     classType = 'multi';
     $('.class-picker').text('Multi');
-    $('.binary').hide();
+    $('.trinary').hide();
     $('.multi').show();
   }
 }

@@ -6,11 +6,13 @@
 var map = {};
 var docNum = 0;
 var load_time = 0;
+var dL = new DataLoader('trinary');
+var inputDocs = dL.inputDocs;
 
 function submit(docNum, answer) {
   var _input_hash = ""; // TODO
   var _task_hash = ""; // TODO
-  updateLabel(docNum, answer, load_time, _input_hash, _task_hash);
+  dL.updateTrinaryLabel(docNum, answer, load_time, _input_hash, _task_hash);
   reloadDoc(docNum+1);
 }
 function initDownloadBtn(text) {
@@ -35,7 +37,7 @@ function reloadDoc(docNum) {
     $('.label-row').toggle(); // hide buttons
 
     // show download section
-    initDownloadBtn(exportDocs())
+    initDownloadBtn(dL.exportDocs())
     $('.download').show();
   }
 }
@@ -72,7 +74,7 @@ document.onkeydown = document.onkeyup = function(e){
       if(spaceKeyDown) {
         // Left + Space
         if(docNum < inputDocs.length){
-          submit(docNum++, leftLabel);
+          submit(docNum++, dL.leftLabel);
         }
       }  
     } else { $('.btn-left').removeClass('btn-left-solid'); }
@@ -84,7 +86,7 @@ document.onkeydown = document.onkeyup = function(e){
       if(spaceKeyDown) {
         // Right + Space
         if(docNum < inputDocs.length){
-          submit(docNum++, rightLabel);
+          submit(docNum++, dL.rightLabel);
         }
       }  
     } else { $('.btn-right').removeClass('btn-right-solid'); }
@@ -96,7 +98,7 @@ document.onkeydown = document.onkeyup = function(e){
       if(spaceKeyDown) {
         // Down + Space
         if(docNum < inputDocs.length){
-          submit(docNum++, downLabel);
+          submit(docNum++, dL.downLabel);
         }
       }  
     } else { $('.btn-down').removeClass('btn-down-solid'); }
@@ -117,15 +119,15 @@ document.onkeydown = document.onkeyup = function(e){
 
 $(function(){
   // load active coder
-  $('.navbar-text').html(active_coder);
-  $('.title').html('Topic: ' + label);
-  $('.btn-left').text(leftLabel);
-  $('.btn-down').text(downLabel);
-  $('.btn-right').text(rightLabel);
+  $('.navbar-text').html(dL.active_coder);
+  $('.title').html('Topic: ' + dL.label);
+  $('.btn-left').text(dL.leftLabel);
+  $('.btn-down').text(dL.downLabel);
+  $('.btn-right').text(dL.rightLabel);
 
-  $('.tip-left').text(' : ' + leftLabel);
-  $('.tip-down').text(' : ' + downLabel);
-  $('.tip-right').text(' : ' + rightLabel);
+  $('.tip-left').text(' : ' + dL.leftLabel);
+  $('.tip-down').text(' : ' + dL.downLabel);
+  $('.tip-right').text(' : ' + dL.rightLabel);
 
   reloadDoc(docNum);
 });

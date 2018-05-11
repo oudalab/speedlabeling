@@ -23,8 +23,8 @@ change .jsonl to .json
 don't update date, map from input to output
 update load_time only if a decision is made
 Specify tags instead of yes/no/junk, put that tag as value for "answer" key
-Specify label_type (binary, multi, etc)
-Specify tag for binary or multiple tags for multi
+Specify label_type (trinary, multi, etc)
+Specify tag for trinary or multiple tags for multi
 Specify multiple tags (comma, semicolon separated)
 record changelog
 
@@ -46,74 +46,96 @@ save output.json to local storage
 Work on specific text highlighting tagger after this, then image segmentation
 
 */
+function DataLoader(type) {
+  this.loadInputFromSession = function() {
+    var input = sessionStorage.getItem('jsonl_input');
+    // TODO handle error checking if key is missing
+    return input;
+  };
+  this.exportDocs = function exportDocs() {
+    exportString = "";
+    this.outputDocs.forEach(function(outputDoc) {
+      exportString += JSON.stringify(outputDoc) + '\n';
+    });
+    return exportString;
+  };
+  this.updateTrinaryLabel = function(docNum, answer, load_time, _input_hash, _task_hash) {
+    if(docNum < inputDocs.length) {
+      var outDoc = this.outputDocs[docNum];
+      // outDoc.label = label;
+      outDoc._input_hash = _input_hash;
+      outDoc._task_hash = _task_hash;
 
-function loadInput() {
-  var input = sessionStorage.getItem('jsonl_input');
-  // TODO handle error checking if key is missing
-  return input;
-}
-function exportDocs() {
-  exportString = "";
-  outputDocs.forEach(function(outputDoc) {
-    exportString += JSON.stringify(outputDoc) + '\n';
-  });
-  return exportString;
-}
-function updateLabel(docNum, answer, load_time, _input_hash, _task_hash) {
-  if(docNum < inputDocs.length) {
-    var outDoc = outputDocs[docNum];
-    // outDoc.label = label;
-    outDoc._input_hash = _input_hash;
-    outDoc._task_hash = _task_hash;
+      var change = {
+        answer: answer,
+        load_time: load_time,
+        submit_time: Date.now()
+      };
+      change.time_taken = change.submit_time - change.load_time;
+      outDoc.edited.push(change);
+    }
+  };
+  this.updateMultiLabel = function(docNum, tags, load_time, _input_hash, _task_hash) {
+    if(docNum < inputDocs.length) {
+      var outDoc = this.outputDocs[docNum];
+      // outDoc.label = label;
+      outDoc._input_hash = _input_hash;
+      outDoc._task_hash = _task_hash;
+      outDoc.tags = tags;
+      outDoc.load_time = load_time;
+      outDoc.submit_time = Date.now();
+      outDoc.time_taken = outDoc.submit_time - outDoc.load_time;
+    }
+  };
 
-    var change = {
-      answer: answer,
-      load_time: load_time,
-      submit_time: Date.now()
-    };
-    change.time_taken = change.submit_time - change.load_time;
-    // change.answer = answer;
-    // change.load_time = load_time;
-    // change.submit_time = Date.now();
-    // change.time_taken = change.submit_time - change.load_time;
-    outDoc.edited.push(change);
+  var input = this.loadInputFromSession();
+  this.active_coder = sessionStorage.getItem('active_coder');
+  this.label = sessionStorage.getItem('label');
+  if(type === 'trinary') {
+    this.leftLabel = sessionStorage.getItem('leftLabel');
+    this.downLabel = sessionStorage.getItem('downLabel');
+    this.rightLabel = sessionStorage.getItem('rightLabel');
   }
+  else if(type === 'multi') {
+    this.recommended = sessionStorage.getItem('multiLabel').split(';');
+  }
+
+  // Format is JSONL, split on the newline and parse to JSON
+  this.inputDocs = input.split('\n').reduce(function(result, jsonStr) {
+    try {
+      var jsonObj = JSON.parse(jsonStr);
+      result.push(jsonObj);
+    } catch(e) {
+      console.log("Line parsing failed.");
+    }
+    return result;
+  }, []);
+
+  // construct output documents
+  this.outputDocs = [];
+  this.inputDocs.forEach(function(inputDoc){
+    outputDoc = {};
+
+    // direct mappings from input to output
+    outputDoc.id = inputDoc.id;
+    outputDoc.source = inputDoc.source;
+    if(inputDoc.text) {
+      outputDoc.text = inputDoc.text;
+    }
+    outputDoc.coders = inputDoc.coders;
+    outputDoc.date = inputDoc.date;
+    outputDoc.label = this.label;
+
+    outputDoc.active_coder = this.active_coder;
+    if(type === 'binary') {
+      outputDoc.edited = [];
+    }
+
+    this.outputDocs.push(outputDoc);
+  }.bind(this));
+
 }
 
-var input = loadInput();
-var active_coder = sessionStorage.getItem('active_coder');
-var label = sessionStorage.getItem('label');
-var leftLabel = sessionStorage.getItem('leftLabel');
-var downLabel = sessionStorage.getItem('downLabel');
-var rightLabel = sessionStorage.getItem('rightLabel');
 
 
-// Format is JSONL, split on the newline and parse to JSON
-var inputDocs = input.split('\n').reduce(function(result, jsonStr) {
-  try {
-    var jsonObj = JSON.parse(jsonStr);
-    result.push(jsonObj);
-  } catch(e) {
-    console.log("Line parsing failed.");
-  }
-  return result;
-}, []);
 
-// construct output documents
-var outputDocs = [];
-inputDocs.forEach(function(inputDoc){
-  outputDoc = {};
-
-  // direct mappings from input to output
-  outputDoc.id = inputDoc.id;
-  outputDoc.source = inputDoc.source;
-  outputDoc.text = inputDoc.text;
-  outputDoc.coders = inputDoc.coders;
-  outputDoc.date = inputDoc.date;
-  outputDoc.label = label;
-
-  outputDoc.active_coder = active_coder;
-  outputDoc.edited = [];
-
-  outputDocs.push(outputDoc);
-});

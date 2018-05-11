@@ -9,7 +9,7 @@ body {
   min-height: 100%;
 }
 .main {
-  padding-top: 40px;
+  padding-top: 20px;
   height: -moz-calc(100% - (60px));
   height: -webkit-calc(100% - (60px));
   height: calc(100% - (60px));
@@ -67,14 +67,33 @@ body {
   min-height: 60px;
 }
 .recommended {
-  height: calc(100% - (51.6px + 66.6px));
+  height: calc(100% - (51.6px + 66.6px + 50px));
 }
 .tagged {
-  height: calc(100% - (51.6px));
+  height: calc(100% - (51.6px + 50px));
 }
 .recommended, .tagged {
   overflow-y: auto;
   overflow-x: hidden;
-  /*min-height: 100%;*/
-  /*height: 100%;*/
+}
+.card-body {
+  height: 300px;
+  max-height: 300px;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+.previous {
+  position: fixed;
+  top: 50%;
+  left: 0px;
+}
+.next {
+  position: fixed;
+  top: 50%;
+  right: 0px;
+}
+.next-hover, .previous-hover {
+  color: #212529;
+  background-color: #e2e6ea;
+  border-color: #dae0e5;
 }

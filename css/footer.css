@@ -10,3 +10,16 @@
 .footer:hover {
   opacity: 1.0
 }
+.hotkey-bar {
+  position: relative;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.hotkey-tip {
+  /*margin-right: 30px;*/
+
+}
